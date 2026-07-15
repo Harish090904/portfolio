@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harish S — Biomedical &amp; Rehabilitation Engineer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317212B'/%3E%3Cpath d='M3 17h5l2-8 3 16 3-11 2 6 3-9 2 6h6' fill='none' stroke='%23E2A33D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF2F1;
+    --paper-deep:#E5EBE9;
+    --ink:#17212B;
+    --ink-soft:#46545F;
+    --amber:#C97F1F;
+    --amber-soft:#E2A33D;
+    --teal:#1F6F63;
+    --navy:#1F3A5F;
+    --line:#CBD8D6;
+    --card:#FFFFFF;
+    --card-border:#DCE3E1;
+    --max:1080px;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber-soft); color:var(--ink); }
+
+  a{color:inherit}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  h1,h2,h3,.display{ font-family:var(--display); letter-spacing:-0.01em; }
+  .mono{ font-family:var(--mono); letter-spacing:0.02em; }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,242,241,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{ font-family:var(--display); font-weight:700; font-size:1.05rem; text-decoration:none; }
+  .brand span{ color:var(--amber); }
+  nav ul{ list-style:none; display:flex; gap:26px; margin:0; padding:0; }
+  nav ul a{
+    text-decoration:none; font-family:var(--mono); font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft);
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:color .18s ease, border-color .18s ease;
+  }
+  nav ul a:hover{ color:var(--ink); border-color:var(--amber); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-family:var(--mono); cursor:pointer; }
+
+  @media (max-width: 760px){
+    nav ul{
+      position:fixed; inset:64px 0 auto 0; background:var(--paper);
+      flex-direction:column; padding:18px 28px 26px; gap:16px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    nav ul.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:88px 0 40px;
+    background-image:
+      linear-gradient(var(--paper), var(--paper)),
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(31,58,95,0.05) 27px, rgba(31,58,95,0.05) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, rgba(31,58,95,0.05) 27px, rgba(31,58,95,0.05) 28px);
+    background-blend-mode:normal;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:0.78rem; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--teal); margin:0 0 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:""; width:8px; height:8px; border-radius:50%; background:var(--teal);
+    box-shadow:0 0 0 4px rgba(31,111,99,0.15);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    font-weight:700; margin:0 0 6px; line-height:1.02;
+  }
+  .role-line{
+    font-family:var(--display); font-weight:500;
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem); color:var(--ink-soft);
+    height:1.6em; overflow:hidden; margin-bottom:22px;
+  }
+  #role-cycle{ color:var(--amber); border-bottom:2px solid var(--amber-soft); padding-bottom:2px; }
+  .hero p.lede{
+    max-width:640px; font-size:1.08rem; color:var(--ink-soft); margin:0 0 30px;
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:56px; }
+  .btn{
+    font-family:var(--mono); font-size:0.85rem; text-decoration:none;
+    padding:12px 22px; border-radius:30px; border:1px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px; transition:all .18s ease;
+  }
+  .btn.solid{ background:var(--ink); color:var(--paper); }
+  .btn.solid:hover{ background:var(--amber); border-color:var(--amber); color:var(--ink); }
+  .btn.ghost{ background:transparent; }
+  .btn.ghost:hover{ background:var(--card); border-color:var(--amber); }
+
+  /* ---------- Signature waveform ---------- */
+  .waveband{
+    width:100%; height:110px; overflow:hidden; position:relative;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--card);
+  }
+  .waveband .track{
+    display:flex; width:200%; height:100%;
+    animation:scrollwave 22s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .waveband .track{ animation:none; } }
+  .waveband svg{ width:50%; height:100%; display:block; flex:0 0 50%; }
+  @keyframes scrollwave{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .wave-labels{
+    display:flex; justify-content:space-between; max-width:var(--max); margin:10px auto 0; padding:0 28px;
+    font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-soft);
+  }
+
+  /* ---------- Sections ---------- */
+  section{ padding:78px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:38px; }
+  .section-head .num{ font-family:var(--mono); color:var(--amber); font-size:0.85rem; }
+  .section-head h2{ font-size:clamp(1.6rem,3vw,2.1rem); margin:0; }
+  .section-head .rule{ flex:1; height:1px; background:var(--line); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* About */
+  .about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:48px; align-items:start; }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ color:var(--ink-soft); }
+  .fact-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:20px 22px; margin-bottom:14px;
+  }
+  .fact-card .k{ font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); }
+  .fact-card .v{ font-family:var(--display); font-weight:600; margin-top:4px; }
+
+  /* Timeline */
+  .timeline{ position:relative; padding-left:26px; border-left:2px solid var(--line); }
+  .tl-item{ position:relative; padding-bottom:36px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:""; position:absolute; left:-32px; top:4px; width:12px; height:12px;
+    border-radius:50%; background:var(--paper); border:2px solid var(--amber);
+  }
+  .tl-date{ font-family:var(--mono); font-size:0.76rem; color:var(--teal); text-transform:uppercase; letter-spacing:0.06em; }
+  .tl-role{ font-family:var(--display); font-weight:600; font-size:1.12rem; margin:4px 0 8px; }
+  .tl-item ul{ margin:8px 0 0; padding-left:20px; color:var(--ink-soft); }
+  .tl-item li{ margin-bottom:4px; }
+
+  /* Projects grid */
+  .proj-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  @media (max-width:920px){ .proj-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px){ .proj-grid{ grid-template-columns:1fr; } }
+  .card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:16px;
+    padding:24px; display:flex; flex-direction:column; gap:12px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px -18px rgba(23,33,43,0.35); border-color:var(--amber-soft); }
+  .card-icon{ width:38px; height:38px; }
+  .card h3{ font-size:1.05rem; margin:0; line-height:1.25; }
+  .card p{ color:var(--ink-soft); font-size:0.94rem; margin:0; flex-grow:1; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+  .tag{
+    font-family:var(--mono); font-size:0.68rem; padding:3px 9px; border-radius:20px;
+    background:var(--paper-deep); color:var(--ink-soft); border:1px solid var(--line);
+  }
+  .badge{
+    font-family:var(--mono); font-size:0.68rem; padding:3px 9px; border-radius:20px;
+    background:rgba(201,127,31,0.12); color:var(--amber); border:1px solid rgba(201,127,31,0.3);
+    align-self:flex-start;
+  }
+
+  /* Publications */
+  .pub{
+    background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:20px 24px; margin-bottom:14px; display:flex; gap:16px; align-items:flex-start;
+  }
+  .pub .p-index{ font-family:var(--mono); color:var(--amber); font-size:0.85rem; padding-top:2px; }
+  .pub h3{ margin:0 0 6px; font-size:1.02rem; }
+  .pub p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
+
+  /* Achievements */
+  .ach-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  @media (max-width:700px){ .ach-grid{ grid-template-columns:1fr; } }
+  .ach{
+    display:flex; gap:14px; align-items:flex-start;
+    background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:16px 18px;
+  }
+  .ach .trophy{ color:var(--amber); font-family:var(--display); font-weight:700; }
+  .ach p{ margin:0; color:var(--ink-soft); font-size:0.93rem; }
+
+  /* Skills */
+  .skill-block{ margin-bottom:24px; }
+  .skill-block .k{ font-family:var(--mono); text-transform:uppercase; letter-spacing:0.08em; font-size:0.76rem; color:var(--teal); margin-bottom:10px; display:block; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:9px; }
+  .chip{
+    font-family:var(--mono); font-size:0.82rem; padding:7px 14px; border-radius:8px;
+    background:var(--card); border:1px solid var(--card-border);
+  }
+
+  /* Education */
+  .edu-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  @media (max-width:760px){ .edu-grid{ grid-template-columns:1fr; } }
+  .edu-card{ background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px; }
+  .edu-card .school{ font-family:var(--display); font-weight:600; margin-bottom:4px; }
+  .edu-card .meta{ color:var(--ink-soft); font-size:0.9rem; }
+  .edu-card .yr{ font-family:var(--mono); font-size:0.76rem; color:var(--amber); margin-bottom:8px; display:block; }
+
+  /* Contact / footer */
+  footer{ background:var(--ink); color:var(--paper); padding:64px 0 34px; }
+  footer h2{ font-size:clamp(1.8rem,4vw,2.6rem); margin:0 0 12px; }
+  footer p.lede{ color:#B9C3CC; max-width:520px; margin:0 0 34px; }
+  .contact-row{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:52px; }
+  footer .btn{ border-color:#3A4954; color:var(--paper); }
+  footer .btn.solid{ background:var(--amber-soft); color:var(--ink); border-color:var(--amber-soft); }
+  footer .btn.solid:hover{ background:var(--paper); border-color:var(--paper); }
+  footer .btn.ghost:hover{ background:rgba(255,255,255,0.06); border-color:var(--amber-soft); }
+  .foot-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    border-top:1px solid #2C3944; padding-top:22px;
+    font-family:var(--mono); font-size:0.76rem; color:#7E8B94;
+  }
+
+  .lang-row{ display:flex; gap:10px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="#top" class="brand">HARISH<span>.</span>S</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul id="navList">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:none; padding-bottom:0;">
+    <div class="wrap">
+      <p class="eyebrow">Vellore, Tamil Nadu, India</p>
+      <h1>Harish S</h1>
+      <p class="role-line">I build <span id="role-cycle">EEG monitors</span></p>
+      <p class="lede">Biomedical engineering undergraduate turning the body's signals — brain waves, gait, breath, temperature — into working medical devices. Hands-on across embedded systems, IoMT, rehabilitation engineering, and cloud-connected healthcare tools.</p>
+      <div class="hero-ctas">
+        <a class="btn solid" href="#projects">See the work ↓</a>
+        <a class="btn ghost" href="Harish_S_Resume.pdf" download>Download Resume ⬇</a>
+        <a class="btn ghost" href="mailto:harishsridharan07919@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/harishs2026" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/Harish090904" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Signature: scrolling biosignal band, EEG -> VOC/incubator -> gait -->
+    <div class="waveband" aria-hidden="true">
+      <div class="track">
+        <svg viewBox="0 0 1600 110" preserveAspectRatio="none">
+          <!-- EEG segment -->
+          <path d="M0,55 L40,55 L55,20 L70,90 L85,40 L100,70 L115,55 L150,58 L165,25 L180,85 L195,45 L210,65 L225,55 L260,52 L275,15 L290,95 L305,35 L320,72 L335,55 L370,60 L385,22 L400,88 L415,42 L430,68 L445,55 L480,50"
+                fill="none" stroke="#1F6F63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- transition dot -->
+          <circle cx="500" cy="55" r="4" fill="#C97F1F"/>
+          <!-- Thermal/VOC segment: slow rounded sinusoid -->
+          <path d="M500,55 C540,20 580,90 620,55 C660,20 700,90 740,55 C780,20 820,90 860,55 C900,20 940,90 980,55"
+                fill="none" stroke="#C97F1F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="1000" cy="55" r="4" fill="#1F3A5F"/>
+          <!-- Gait/stride segment: stepped square wave -->
+          <path d="M1000,80 L1040,80 L1040,30 L1110,30 L1110,80 L1180,80 L1180,30 L1250,30 L1250,80 L1320,80 L1320,30 L1390,30 L1390,80 L1460,80 L1460,30 L1530,30 L1530,80 L1600,80"
+                fill="none" stroke="#1F3A5F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg viewBox="0 0 1600 110" preserveAspectRatio="none">
+          <path d="M0,55 L40,55 L55,20 L70,90 L85,40 L100,70 L115,55 L150,58 L165,25 L180,85 L195,45 L210,65 L225,55 L260,52 L275,15 L290,95 L305,35 L320,72 L335,55 L370,60 L385,22 L400,88 L415,42 L430,68 L445,55 L480,50"
+                fill="none" stroke="#1F6F63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="500" cy="55" r="4" fill="#C97F1F"/>
+          <path d="M500,55 C540,20 580,90 620,55 C660,20 700,90 740,55 C780,20 820,90 860,55 C900,20 940,90 980,55"
+                fill="none" stroke="#C97F1F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="1000" cy="55" r="4" fill="#1F3A5F"/>
+          <path d="M1000,80 L1040,80 L1040,30 L1110,30 L1110,80 L1180,80 L1180,30 L1250,30 L1250,80 L1320,80 L1320,30 L1390,30 L1390,80 L1460,80 L1460,30 L1530,30 L1530,80 L1600,80"
+                fill="none" stroke="#1F3A5F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="wave-labels">
+      <span style="color:#1F6F63">◆ Neural — Neuro-Wave EEG</span>
+      <span style="color:#C97F1F">◆ Thermal / VOC — Incubator &amp; Breath Screening</span>
+      <span style="color:#1F3A5F">◆ Gait — Stride Length System</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><span class="num">01</span><h2>About</h2><span class="rule"></span></div>
+      <div class="about-grid reveal">
+        <div>
+          <p>I'm a final-year Biomedical Engineering student at Dhanalakshmi Srinivasan College of Engineering and Technology, specializing in medical device design, rehabilitation engineering, and wearable health tech. Most of what I know, I learned by building: wiring an ESP32 at 2am before a hackathon demo, calibrating an ultrasonic sensor until the numbers finally made sense, or debugging why a gyroscope integration drifted over a 10-minute walk.</p>
+          <p>That hands-on habit runs across instrumentation, embedded systems, IoMT, and cloud-connected healthcare tools — from a wearable EEG system that won a statewide hackathon, to a patent-pending incubator controller, to an Android app that watches ICU staff sanitize their hands. I'm currently interning at Christian Medical College, Vellore, continuing to work at the intersection of engineering and patient care.</p>
+        </div>
+        <div>
+          <div class="fact-card"><div class="k">Currently</div><div class="v">Intern, Christian Medical College Vellore</div></div>
+          <div class="fact-card"><div class="k">Degree</div><div class="v">B.E. (Hons) Biomedical Engineering — CGPA 8.8</div></div>
+          <div class="fact-card"><div class="k">Focus</div><div class="v">IoMT · Embedded Systems · Rehab Engineering</div></div>
+          <div class="fact-card"><div class="k">Based in</div><div class="v">Vellore, Tamil Nadu, India</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head"><span class="num">02</span><h2>Experience</h2><span class="rule"></span></div>
+      <div class="timeline reveal">
+
+        <div class="tl-item">
+          <div class="tl-date">Jan 2026 — Present</div>
+          <div class="tl-role">Intern · Christian Medical College, Vellore</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">Feb 2025 — Mar 2025 · Taramani</div>
+          <div class="tl-role">Student Intern · Council of Scientific &amp; Industrial Research (CSIR)</div>
+          <ul>
+            <li>Built an Air Quality Monitoring System using an ESP32, MQ-135 gas sensor, I2C LCD, a 12V battery, and a buck converter to detect CO₂, ammonia, benzene, and smoke.</li>
+            <li>Programmed sensor calibration and ADC-based signal processing in Arduino IDE, with real-time gas concentration alerts.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">Oct 2024</div>
+          <div class="tl-role">Open Source Contributor · GirlScript Summer of Code</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">Aug 2024 — Sep 2024 · Vellore</div>
+          <div class="tl-role">Rehabilitation Engineering Intern · Christian Medical College, Vellore</div>
+          <ul>
+            <li>Studied stroke and spasm rehabilitation, then used SolidWorks/AutoCAD to design an upper-limb assist device with ArUco marker tracking.</li>
+            <li>Built a companion Unity therapy game driven by live marker feedback to support motor-control recovery.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">Jun 2023 — Sep 2023 · Bengaluru</div>
+          <div class="tl-role">Cloud Computing Trainee · Skill Vertex</div>
+          <ul>
+            <li>Learned AWS and Azure architecture fundamentals; deployed a static site to practice storage, serverless hosting, and cost optimization.</li>
+            <li>Built a Cloud-Based Smart Blood Bank System as the capstone project.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><span class="num">03</span><h2>Key Projects</h2><span class="rule"></span></div>
+      <div class="proj-grid reveal">
+
+        <div class="card">
+          <span class="badge">🏆 1st place, statewide</span>
+          <h3>Neuro-Wave — 5G EEG Monitoring</h3>
+          <p>Wearable, AI-integrated EEG system using 5G for real-time brain activity monitoring and early detection of neurological disorders. Led the team to 1st place at the Naan Mudhalvan Statewide Hackathon 2025.</p>
+          <div class="tag-row"><span class="tag">EEG</span><span class="tag">5G</span><span class="tag">AI</span><span class="tag">Wearable</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">📄 Published + patent filed</span>
+          <h3>Incubator Temperature Regulation</h3>
+          <p>PID-controlled incubator system with IoT integration — ESP32, LM35 sensor, and relays — with real-time visualization via Adafruit IO.</p>
+          <div class="tag-row"><span class="tag">ESP32</span><span class="tag">PID Control</span><span class="tag">IoT</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">🩺 AI diagnosis aid</span>
+          <h3>Diabetic Foot Ulcer Detection</h3>
+          <p>AI model that detects and categorizes ulcer type from a thermal/uploaded image and recommends the corresponding treatment approach.</p>
+          <div class="tag-row"><span class="tag">Thermal Imaging</span><span class="tag">AI/ML</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">🎯 96% accuracy</span>
+          <h3>Breast Cancer Detection — MATLAB</h3>
+          <p>Image-processing pipeline that preprocesses and segments mammogram images, classifying tumors as benign or malignant.</p>
+          <div class="tag-row"><span class="tag">MATLAB</span><span class="tag">Image Processing</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">🦾 With CMC Vellore</span>
+          <h3>Upper Limb Assist Device</h3>
+          <p>Upper-arm rehabilitation device with ArUco marker tracking for stroke patients, plus a Unity-based therapy game driven by live marker feedback.</p>
+          <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">Python</span><span class="tag">Unity</span><span class="tag">3D Printing</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">☁️ Cloud + IoT</span>
+          <h3>Cloud-Based Smart Blood Bank</h3>
+          <p>Real-time donor/recipient database on AWS/Azure with IoT-based alerts for nearby donation camps and urgent blood requests.</p>
+          <div class="tag-row"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">IoT</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">🧼 ICU compliance</span>
+          <h3>Saviour Gate — Sanitization Compliance</h3>
+          <p>ESP32-based smart gate using dual ultrasonic sensors and a force sensor to verify hand sanitization, paired with an Android app for live monitoring, background CSV logging, and one-tap export.</p>
+          <div class="tag-row"><span class="tag">ESP32</span><span class="tag">Android / Kotlin</span><span class="tag">IoMT</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">🚶 Gait analysis</span>
+          <h3>Stride Length Measurement System</h3>
+          <p>Wearable dual-pod system (ESP32 + ultrasonic sensors + LiPo battery) worn on each ankle. Uses a pendulum-based biomechanical model with gyroscope integration to estimate stride length for both healthy users and rehab patients.</p>
+          <div class="tag-row"><span class="tag">ESP32</span><span class="tag">IMU</span><span class="tag">Biomechanics</span></div>
+        </div>
+
+        <div class="card">
+          <span class="badge">🌫️ CSIR internship</span>
+          <h3>Air Quality Monitoring System</h3>
+          <p>ESP32 + MQ-135 based system detecting CO₂, ammonia, benzene, and smoke, with real-time readouts on an I2C LCD.</p>
+          <div class="tag-row"><span class="tag">ESP32</span><span class="tag">MQ-135</span><span class="tag">Embedded</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="wrap">
+      <div class="section-head"><span class="num">04</span><h2>Publications</h2><span class="rule"></span></div>
+      <div class="reveal">
+        <div class="pub">
+          <div class="p-index">01</div>
+          <div>
+            <h3>AI-Based Breath Volatile Organic Compounds Pattern Recognition System for Early Health Risk Screening</h3>
+            <p>Research on using breath VOC patterns and AI recognition for early, non-invasive health risk screening.</p>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="p-index">02</div>
+          <div>
+            <h3>Research Paper — IoT-Based Incubator Temperature Regulation System</h3>
+            <p>Published alongside the PID-controlled incubator project; a patent application has been filed for this system.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="wrap">
+      <div class="section-head"><span class="num">05</span><h2>Achievements</h2><span class="rule"></span></div>
+      <div class="ach-grid reveal">
+        <div class="ach"><span class="trophy">★</span><p>Young Scientist Award.</p></div>
+        <div class="ach"><span class="trophy">★</span><p>Best Project Award — Detection of Breast Cancer Type Using MATLAB.</p></div>
+        <div class="ach"><span class="trophy">★</span><p>Designed and deployed a food-ordering web application on AWS with a custom domain.</p></div>
+        <div class="ach"><span class="trophy">★</span><p>1st Place — National-level conference, Karpaga Vinayaga College of Engineering and Technology.</p></div>
+        <div class="ach"><span class="trophy">★</span><p>1st Place (internal round) — Smart India Hackathon; ranked in the All-India Top 100.</p></div>
+        <div class="ach"><span class="trophy">★</span><p>1st Place — Project Expo, 2nd year, Dhanalakshmi Srinivasan College of Engineering and Technology.</p></div>
+        <div class="ach"><span class="trophy">★</span><p>1st Place — Naan Mudhalvan Statewide Hackathon, Feb 25, 2025.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><span class="num">06</span><h2>Skills</h2><span class="rule"></span></div>
+      <div class="reveal">
+        <div class="skill-block">
+          <span class="k">Programming</span>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">C++</span>
+            <span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">SQL</span>
+            <span class="chip">Bootstrap</span><span class="chip">React</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <span class="k">Tools</span>
+          <div class="chip-row">
+            <span class="chip">SolidWorks</span><span class="chip">AutoCAD</span><span class="chip">MATLAB</span>
+            <span class="chip">Arduino IDE</span><span class="chip">ESP32 / Embedded Firmware</span>
+            <span class="chip">Android Studio (Kotlin)</span><span class="chip">Unity</span>
+            <span class="chip">AWS</span><span class="chip">Microsoft Azure</span><span class="chip">Adafruit IoT</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <span class="k">Specializations</span>
+          <div class="chip-row">
+            <span class="chip">Biomedical Instrumentation</span><span class="chip">Embedded Systems</span>
+            <span class="chip">IoMT</span><span class="chip">Data Science Basics</span>
+            <span class="chip">Diagnostic &amp; Therapeutic Equipment</span><span class="chip">Medical Image Processing</span>
+            <span class="chip">Tissue Engineering</span><span class="chip">Forensic Science</span><span class="chip">Genetic Engineering</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <span class="k">Soft Skills</span>
+          <div class="chip-row">
+            <span class="chip">Communication</span><span class="chip">Problem-Solving</span>
+            <span class="chip">Leadership</span><span class="chip">Multi-tasking</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <span class="k">Languages</span>
+          <div class="chip-row lang-row">
+            <span class="chip">Tamil — Native</span><span class="chip">English — Professional</span><span class="chip">Hindi — Professional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head"><span class="num">07</span><h2>Education</h2><span class="rule"></span></div>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <span class="yr">2022 — 2026</span>
+          <div class="school">Dhanalakshmi Srinivasan College of Engineering and Technology</div>
+          <div class="meta">B.E. (Honours), Biomedical Engineering — CGPA 8.8</div>
+        </div>
+        <div class="edu-card">
+          <span class="yr">2022</span>
+          <div class="school">VVNKM Sr. Sec. School, CBSE</div>
+          <div class="meta">AISSE — Class XII · 376/500 (75.2%)</div>
+        </div>
+        <div class="edu-card">
+          <span class="yr">2020</span>
+          <div class="school">VVNKM Sr. Sec. School, CBSE</div>
+          <div class="meta">AISSCE — Class X · 435/500 (87%)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's build something that helps someone.</h2>
+    <p class="lede">Open to internships, research collaborations, and roles in medical device design, rehabilitation engineering, or wearable health tech.</p>
+    <div class="contact-row">
+      <a class="btn solid" href="mailto:harishsridharan07919@gmail.com">harishsridharan07919@gmail.com</a>
+      <a class="btn ghost" href="Harish_S_Resume.pdf" download>Download Resume ⬇</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/harishs2026" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn ghost" href="https://github.com/Harish090904" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Harish S · Vellore, Tamil Nadu, India</span>
+      <span>Biomedical Engineering · IoMT · Rehabilitation Engineering</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navList = document.getElementById('navList');
+  navToggle.addEventListener('click', () => navList.classList.toggle('open'));
+  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+
+  // Rotating role text
+  const roles = ["EEG monitors", "rehab devices", "wearable sensors", "ICU compliance systems", "gait-analysis wearables"];
+  let ri = 0;
+  const roleEl = document.getElementById('role-cycle');
+  function cycleRole(){
+    roleEl.style.opacity = 0;
+    setTimeout(() => {
+      ri = (ri + 1) % roles.length;
+      roleEl.textContent = roles[ri];
+      roleEl.style.opacity = 1;
+    }, 250);
+  }
+  roleEl.style.transition = 'opacity .25s ease';
+  setInterval(cycleRole, 2600);
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
